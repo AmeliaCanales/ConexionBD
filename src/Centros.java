@@ -1,5 +1,3 @@
-package ppal;
-
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -7,11 +5,11 @@ import java.sql.Statement;
 
 import conexion.ConexionBD;
 
-public class PruebaConexion {
+public class Centros {
 
 	public static void main(String[] args) {
 		
-		ConexionBD conexion = new ConexionBD();
+ConexionBD conexion = new ConexionBD();
 		
 		
 		
@@ -30,15 +28,15 @@ public class PruebaConexion {
 			
 		
 		//Paso 3.Ejecutar la sentencia
-		resultado = sentencia.executeQuery("select cod_empleado, nombre, salario from empleados");
+		resultado = sentencia.executeQuery("select cod_centro, nombre, direccion from centros");
 				
 		//Paso 4. Recorrer el resultado
 		while (resultado.next()) {
-			int codEmpleado = resultado.getInt("cod_empleado");
+			int codCentro = resultado.getInt("cod_centro");
 			String nombre = resultado.getString("nombre");
-			int salario = resultado.getInt("salario");
+			String direccion = resultado.getString("direccion");
 			
-			System.out.println(codEmpleado+"\t"+nombre+"\t"+salario);
+			System.out.println(codCentro+"\t"+nombre+"\t"+direccion);
 
 		}
 		} catch (SQLException e) {
@@ -55,6 +53,9 @@ public class PruebaConexion {
 		// Liberamos la conexión 
 		conexion.desconectar(); 
 		
+
+	
+
 
 	}
 
